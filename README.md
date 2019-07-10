@@ -7,6 +7,7 @@ A Zhongwen (Chinese) Language Processing Package.
 
 ```
 from ZhongLP.segmenter import Segmenter
+from ZhongLP import zh_utils
 
 ```
 
