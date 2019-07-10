@@ -12,7 +12,7 @@ from ZhongLP import zh_utils
 text =  "   ih kkk .  lll. "
 print(text)
 
-text_c = zh_utils.clean_text_line(text)
+text_c = zh_utils.clean_simply_text_line(text)
 print(text_c)
 
 

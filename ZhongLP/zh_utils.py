@@ -24,13 +24,14 @@ def convert_limited_to_quanjiao(text, list_limited=None):
     return text
 
 #
-def clean_text_line(text):
+def clean_simply_text_line(text):
     """ strip and standardize blank tokens
     """
     text = text.strip()
     text = " ".join(text.split())
     return text
-    
+
+#  
 def segment_sentences(text, delimiters = None):
     """ 
     """
