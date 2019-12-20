@@ -1,18 +1,15 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jul 10 21:53:40 2019
 
-@author: li-ming-fan
-"""
+import sys
+sys.path.append("../ZhongLP")
 
-from ZhongLP import zh_utils
+from ZhongLP import utils_zh
 
 
-text =  "   ih kkk .  lll. "
+text = "....?????"
 print(text)
 
-text_c = zh_utils.clean_simply_text_line(text)
-print(text_c)
+text_quan = utils_zh.convert_ban_to_quan(text)
+print(text_quan)
 
-
+text_ban = utils_zh.convert_quan_to_ban(text_quan)
+print(text_ban)

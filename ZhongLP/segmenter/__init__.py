@@ -12,39 +12,39 @@ import jieba
 
 import re
 
+
 class Segmenter():
-    
-    pattern_int = re.compile(r'^[0-9]+$')
-    pattern_float = re.compile(r'^[0-9,]*\.[0-9,]+$')
-    pattern_percent = re.compile(r'^[\.0-9,]+%+$')    
-    pattern_longalnum = re.compile(r'^[0-9,%\\/\.a-zA-Z]+$')
-    
+    """
+    """
     def __init__(self):
-        
-        self.flag_replace = 1
-        
-        #
-        self.long_alnum_threshold = 8
-        
-        self.list_patterns = []
-        self.list_patterns.append( (self.pattern_int, "[tkn_int]") )
-        self.list_patterns.append( (self.pattern_float, "[tkn_float]") )
-        self.list_patterns.append( (self.pattern_percent, "[tkn_percent]") )
-        
-        self.list_patterns_length = []
-        self.list_patterns_length.append(
-                (self.pattern_longalnum, "[tkn_alnum]", self.long_alnum_threshold) )
-        #
-        
-        #
+        """
+        """        
         self.reset()
         #
     
     #
     def reset(self):
+        """
+        """
+        self.flag_replace = 0
+        #
+        self.pattern_int = re.compile(r'^[0-9]+$')
+        self.pattern_float = re.compile(r'^[0-9,]*\.[0-9,]+$')
+        self.pattern_percent = re.compile(r'^[\.0-9,]+%+$')
+        #
+        self.list_patterns = []
+        self.list_patterns.append( (self.pattern_int, "[tkn_int]") )
+        self.list_patterns.append( (self.pattern_float, "[tkn_float]") )
+        self.list_patterns.append( (self.pattern_percent, "[tkn_percent]") )
+        #
+        self.pattern_longalnum = re.compile(r'^[0-9,%\\/\.a-zA-Z]+$')
+        self.long_alnum_threshold = 20
+        #
+        self.list_patterns_length = []
+        self.list_patterns_length.append(
+                (self.pattern_longalnum, "[tkn_alnum]", self.long_alnum_threshold) )
+        #
         
-        pass
-    
     #
     def load_user_dict(self, file_path):
         
@@ -67,14 +67,14 @@ class Segmenter():
     def segment_and_replace(self, text):
         """
         """        
-        list_no_rep = self.segment(text)
-        return self.replace_patterned_tokens(list_no_rep)
+        list_before_rep = self.segment(text)
+        return self.replace_patterned_tokens(list_before_rep)
     
-    def replace_patterned_tokens(self, list_no_replacement):
+    def replace_patterned_tokens(self, list_before_rep):
         """
         """
         list_rep = []
-        for token in list_no_replacement:
+        for token in list_before_rep:
             for pattern, rep_token in self.list_patterns:
                 if pattern.match(token):
                     list_rep.append(rep_token)

@@ -7,8 +7,8 @@ Created on Wed Jul 10 21:42:06 2019
 """
 
 
-# import sys
-# sys.path.append("../ZhongLP")
+import sys
+sys.path.append("../ZhongLP")
 
 
 from ZhongLP.segmenter import Segmenter

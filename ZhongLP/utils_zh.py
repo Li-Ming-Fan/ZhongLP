@@ -6,31 +6,6 @@ Created on Wed Jul 10 21:24:01 2019
 @author: li-ming-fan
 """
 
-#
-def convert_traditional_to_simplified(text):
-    """
-    """
-    return text    
-
-#
-def convert_limited_to_banjiao(text, list_limited=None):
-    """
-    """
-    return text
-
-def convert_limited_to_quanjiao(text, list_limited=None):
-    """
-    """
-    return text
-
-#
-def clean_simply_text_line(text):
-    """ strip and standardize blank tokens
-    """
-    text = text.strip()
-    text = " ".join(text.split())
-    return text
-
 #  
 def segment_sentences(text, delimiters = None):
     """ 
@@ -82,4 +57,33 @@ def segment_sentences(text, delimiters = None):
     #
     return list_sent
     
+
+#
+# chars
+def convert_quan_to_ban(str_quan):
+    """全角转半角"""
+    str_ban = ""
+    for uchar in str_quan:
+        inside_code = ord(uchar)
+        if inside_code == 12288:                              #全角空格直接转换            
+            inside_code = 32 
+        elif (inside_code >= 65281 and inside_code <= 65374): #全角字符（除空格）根据关系转化
+            inside_code -= 65248
+        #
+        str_ban += chr(inside_code)
+    return str_ban
+    
+def convert_ban_to_quan(str_ban):
+    """半角转全角"""
+    str_quan = ""
+    for uchar in str_ban:
+        inside_code = ord(uchar)
+        if inside_code == 32:                                 #半角空格直接转化                  
+            inside_code = 12288
+        elif inside_code >= 32 and inside_code <= 126:        #半角字符（除空格）根据关系转化
+            inside_code += 65248
+        #
+        str_quan += chr(inside_code)
+    return str_quan
+
 
