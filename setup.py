@@ -10,6 +10,9 @@ try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
+    
+import setuptools
+
 
 import ZhongLP
 
@@ -30,7 +33,7 @@ setup(name = 'ZhongLP',
       maintainer='Ming-Fan Li',
       maintainer_email='li_m_f@163.com',
       url='https://github.com/Li-Ming-Fan/ZhongLP',
-      packages=['ZhongLP'],
+      packages=setuptools.find_packages(),
       #license=license,
       platforms=['any'],
       classifiers=[]

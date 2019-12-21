@@ -1,6 +1,6 @@
 
 
-from .langconv import Converter as ConverterOri
+from .converter_pk.langconv import Converter as ConverterOri
 
 
 class Converter():

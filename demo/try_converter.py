@@ -7,7 +7,7 @@ Created on Wed Jul 10 21:53:40 2019
 """
 
 import sys
-sys.path.append("../ZhongLP")
+# sys.path.append("../ZhongLP")
 
 from ZhongLP.converter import Converter
 

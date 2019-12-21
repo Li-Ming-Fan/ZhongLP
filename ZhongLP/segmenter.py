@@ -12,18 +12,22 @@ import jieba
 
 import re
 
+from .segmenter_pk.shortest_bigram import ShortestBigramSegmenter
 
-class Segmenter():
+
+class Segmenter(ShortestBigramSegmenter):
     """
     """
     def __init__(self):
         """
         """        
-        self.reset()
+        super(Segmenter, self).__init__()
+        #
+        self.reset_patterns()
         #
     
     #
-    def reset(self):
+    def reset_patterns(self):
         """
         """
         self.flag_replace = 0
@@ -45,25 +49,7 @@ class Segmenter():
                 (self.pattern_longalnum, "[tkn_alnum]", self.long_alnum_threshold) )
         #
         
-    #
-    def load_user_dict(self, file_path):
-        
-        pass
-            
-    def add_token(self, token, pos="n", count=1000):
-        
-        pass
-    
-    def remove_token(self, token, pos="n"):
-        
-        pass
-    
-    #
-    def segment(self, text):
-        """
-        """
-        return list(jieba.cut(text))
-    
+    #    
     def segment_and_replace(self, text):
         """
         """        
